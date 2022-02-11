@@ -1,7 +1,7 @@
 import handler from "./util/handler";
 import dynamoDb from "./util/dynamodb";
 
-export const main = handler(async () => {
+export const main = handler(async (event) => {
 
 	const params = {
 		TableName: process.env.TABLE_NAME,
@@ -14,7 +14,7 @@ export const main = handler(async () => {
 		// 'ExpressionAttributeValues' defines the value in the condition
 		// - ':userId': defines 'userId' to be the id of the author
 		ExpressionAttributeValues: {
-			":userId": "123",
+			":userId": event.requestContext.authorizer.iam.cognitoIdentity.identityId,
 		},
 	};
 
