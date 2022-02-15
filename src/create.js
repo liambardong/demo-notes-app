@@ -4,9 +4,7 @@ import handler from "./util/handler";
 import dynamoDb from "./util/dynamodb";
 
 export const main = handler(async (event) => {
-	console.log(event);
-	console.log(event.requestContext.authorizer.iam.cognitoIdentity.identityId);
-	console.log("after");
+	
 	const data = JSON.parse(event.body);
 	const params = {
 		TableName: process.env.TABLE_NAME,
