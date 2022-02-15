@@ -13,15 +13,17 @@ export default class ApiStack extends sst.Stack {
 			defaultFunctionProps: {
 				environment: {
 					TABLE_NAME: table.tableName,
+					STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
 				},
 				
 			},
 			routes: {
 				"POST /notes": "src/create.main",
 				"GET  /notes/{id}": "src/get.main",
-				"Get  /notes": "src/list.main",
+				"GET  /notes": "src/list.main",
 				"PUT  /notes/{id}": "src/update.main",
 				"DELETE /notes/{id}": "src/delete.main",
+				"POST /billing": "src/billing.main",
 			},
 		});
 
