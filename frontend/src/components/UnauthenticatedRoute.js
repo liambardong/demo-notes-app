@@ -27,5 +27,5 @@ function querystring(name, url = window.location.href) {
         return false;
     }
 
-    return decodedURIComponent(results[2].replace(/\+/g, ""));
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
